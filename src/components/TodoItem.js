@@ -5,7 +5,6 @@ import './TodoItem.css';
 class TodoItem extends React.Component {
   render() {
     const {item, onClick} = this.props;
-
     return (
       <div 
         onClick={ onClick } 
