@@ -5,26 +5,31 @@ import TodoItem from './components/TodoItem';
 class App extends React.Component {
   constructor() {
     super();
-
     this.state = {
       todoItems: [
-        { title:'Đi đá bóng', isComplete: false }, 
-        { title:'Đi đổ xăng', isComplete: false }, 
-        { title:'Đi chơi', isComplete: false }
+        { title:'Đỏ: bị phạt 30 điểm', isComplete: false },
+        { title:'Đen: bị phạt 25 điểm', isComplete: false }
       ]
     }
   }
-
   onItemClicked(item, index) {
     return () => {
       const {todoItems} = this.state;
-      todoItems[index].isComplete = !item.isComplete;
+      // todoItems[index].isComplete = !item.isComplete;
+      // this.setState({
+      //   TodoItem: todoItems
+      // });
       this.setState({
-        TodoItem: todoItems
+        todoItems: [
+          ...todoItems.slice(0, index),
+          {
+            ...item, isComplete: !item.isComplete
+          },
+          ...todoItems.slice(index + 1)
+        ]
       });
     }
   }
-
   render() {
     const {todoItems} = this.state;
     return (
